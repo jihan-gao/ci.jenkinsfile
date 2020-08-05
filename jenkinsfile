@@ -16,11 +16,11 @@ pipeline{
             steps{
                 script{
                     if (buildType == "maven"){
-					    sh "${mvnHome}/mvn ${buildShell}"
-					else if (){
-					    sh "${npmHome}/npm ${buildShell}"
-					}
-					}
+		        sh "${mvnHome}/mvn ${buildShell}"
+		    else if (buildType == "npm"){
+		        sh "${npmHome}/npm ${buildShell}"
+		     }
+		     }
                 }
             }
         }
