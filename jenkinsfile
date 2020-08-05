@@ -1,27 +1,28 @@
 String buildShell = "${env.buildShell}"
+String buildType = "${env.buildType}"
 
+mvnHome = "/usr/local/apache-maven-3.6.3/bin"
+npmHome = "usr/local/node-v14.7.0-linux-x64/bin"
 
 pipeline{
     agent{
-        node{label "master"}
+        node { 
+		    label "master"
+		}
     }
 
     stages{
         stage("build"){
             steps{
                 script{
-                    mvnHome = tool "maven"
-                    sh "${mvnHome}/bin/mvn ${buildShell}"
+                    if (buildType == "maven"){
+					    sh "${mvnHome}/mvn ${buildShell}"
+					else if (){
+					    sh "${npmHome}/npm ${buildShell}"
+					}
+					}
                 }
             }
         }
-        stage("NpmBuild"){
-		    steps{
-			    script{
-				    npmHome = tool "NPM"
-					sh "${npmHome}/bin/npm ${buildShell}"
-				}
-			}
-		}
     }
 }
