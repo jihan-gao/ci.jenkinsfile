@@ -17,10 +17,10 @@ pipeline{
                 script{
                     if (buildType == "maven"){
 		        sh "${mvnHome}/mvn ${buildShell}"
+		    }
 		    else if (buildType == "npm"){
 		        sh "${npmHome}/npm ${buildShell}"
-		     }
-		     }
+		    }
                 }
             }
         }
