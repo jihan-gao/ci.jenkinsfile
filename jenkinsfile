@@ -5,7 +5,7 @@ package org.devops
 def SonarScan(sonarServer,projectName,projectDesc,projectPath,branchName){
     
     //定义服务器列表
-    def servers = ["test":"sonarqube-test","prod":"sonarqube-prod"]
+    def servers = ["test":"SonarQube","prod":"sonarqube-prod"]
     
     withSonarQubeEnv("${servers[sonarServer]}"){
         def scannerHome = "/usr/local/sonar-scanner"
