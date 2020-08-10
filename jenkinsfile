@@ -2,13 +2,23 @@ pipeline{
     agent any
     
     stages{
-        stage("build"){
-	    steps{
-	        script{
-                mvnHome = tool "M3"
-                sh "${mvnHome}/bin/mvn -version"
-		}
+        stage("MavenBuild"){
+	        steps{
+	            script{
+                    mvnHome = tool "M3"
+                    sh "${mvnHome}/bin/mvn -version"
+		        }
+	        }
 	    }
-	}
+
+        stage("NpmBuild"){
+            steps{
+                script{
+                    npmHome = tool "NPM"
+                    sh "${npmHome}/bin/npm -l"
+                }
+            }
+
+        }
     }
 }
