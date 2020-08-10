@@ -15,7 +15,7 @@ pipeline{
             steps{
                 script{
                     npmHome = tool "NPM"
-                    sh "${npmHome}/bin/npm -l"
+                    sh "${npmHome}/bin/npm version"
                 }
             }
 
